@@ -149,7 +149,8 @@ S_P_500_V2 %>%
     x=element_blank(),
     y=element_blank(),
     title = 'S&P 500 Price in January 2024'
-  )
+  )+
+  theme(legend.position = "none")#---- excludes the side chart related information like blue line is close and red line is open 
 
   
 
