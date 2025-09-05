@@ -1,0 +1,156 @@
+library(tidyverse)
+library(ggplot2)
+library(gghighlight)
+library(ggtext)
+library(showtext)
+library(remotes)
+# remotes::install_github("nsgrantham/ggbraid")
+
+font_add_google("Source Sans Pro", "source_sans_pro")
+font_add_google("Merriweather", "merriweather")
+showtext_auto()
+
+
+
+
+# =============== S&P 500 line chart =========
+
+
+
+
+library(tidyverse)
+
+S_P_500 = gt::sp500 %>% dplyr::select(date,open,close)%>% dplyr::filter(year(date)==2014,month(date)==1)
+
+
+S_P_500_V2 = S_P_500 %>% pivot_longer(
+  cols=-date,
+  names_to = 'type',
+  values_to = 'price'
+)
+
+
+S_P_500_V2 %>%
+  ggplot(aes(date,price,col=type))+
+  ggbraid::geom_braid(
+    data = S_P_500,
+    aes(
+      y=NULL,col=NULL,
+      ymin=open,
+      ymax=close,
+      fill=open<close
+    ),
+    alpha=0.5
+  )+
+  geom_line(linewidth=1.25)+
+  geom_text(
+  data = S_P_500_V2 %>% dplyr::slice_head(n=1,by=type),
+  aes(label=type),
+  hjust=0,
+  vjust=0,
+  family='Source Sans Pro',
+  size=10,
+  nudge_x = 0.1
+  )+
+  theme_minimal(
+    base_size = 24,
+    base_family = 'Source Sans Pro'
+  )+
+theme(
+  panel.grid.minor = element_blank()
+)+
+  scale_color_manual(
+    values = c("#0072B2","#D55E00")
+  )+
+  scale_y_continuous(
+    labels = scales::label_dollar()
+  )+
+  scale_x_date(
+    limits = c(make_date(2014,1,1),make_date(2014,2,10))
+  )+
+  labs(
+    x=element_blank(),
+    y=element_blank(),
+    title = 'S&P 500 Price in January 2024'
+  )
+  
+  
+  
+# --------------- Second version ---------------
+
+
+
+S_P_500_V2 %>%
+  ggplot(aes(date,price,col=type))+
+  ggbraid::geom_braid(
+    data = S_P_500,
+    aes(
+      y=NULL,col=NULL,
+      ymin=open,
+      ymax=close,
+      fill=open<close
+    ),
+    alpha=0.5
+  )+
+  geom_line(linewidth=1.25)+
+  geomtextpath::geom_textline(
+    data = S_P_500_V2 %>% dplyr::filter(type=='open'),
+    aes(label=type),
+    hjust=0.75,
+    vjust=0,
+    family='Source Sans Pro',
+    size=5
+  )+
+  geomtextpath::geom_textline(
+    data = S_P_500_V2 %>% dplyr::filter(type=='close'),
+    aes(label=type),
+    hjust=0.60,
+    vjust=1,
+    family='Source Sans Pro',
+    size=5,
+    text_smoothing=30,
+    offset=unit(-8,'mm')
+  )+
+  ggforce::geom_mark_circle( 
+    data = tibble(date=make_date(2014,1,24),
+                  price=1820
+                  ),
+    aes(
+      col=NULL,
+      label='This area signals whether the\n closing'
+    ),
+    fill='white',
+    color='grey20',
+    aplha=1,
+    x0=make_date(2014,1,13),
+    y0=1805
+                             
+)+
+  theme_minimal(
+    base_size = 24,
+    base_family = 'Source Sans Pro'
+  )+
+  theme(
+    panel.grid.minor = element_blank()
+  )+
+  scale_color_manual(
+    values = c("close"="#0072B2","open"="#D55E00")
+  )+
+  scale_fill_manual(
+    values = c("TRUE"="#0072B2","FALSE"="#D55E00")
+  )+
+  scale_y_continuous(
+    labels = scales::label_dollar()
+  )+
+  # scale_x_date(
+  #   limits = c(make_date(2014,1,1),make_date(2014,2,10))
+  # )+
+  labs(
+    x=element_blank(),
+    y=element_blank(),
+    title = 'S&P 500 Price in January 2024'
+  )
+
+  
+
+
