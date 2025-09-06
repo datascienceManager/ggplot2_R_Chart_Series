@@ -1,0 +1,83 @@
+
+# ======================== Heat Map ===========
+
+# View(mtcars)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(gghighlight)
+library(ggtext)
+library(showtext)
+library(remotes)
+# remotes::install_github("nsgrantham/ggbraid")
+
+font_add_google("Source Sans Pro", "source_sans_pro")
+font_add_google("Merriweather", "merriweather")
+showtext_auto()
+
+Df= mtcars %>% 
+  dplyr::mutate(.,Carnames = row.names(.))%>% 
+  dplyr::select(.,mpg:Carnames)%>%
+  remove_rownames()%>%
+  dplyr::mutate(.,GearType=dplyr::case_when(gear==3~'Gear-3',
+                                            gear==4~'Gear-4',
+                                            gear==5~'Gear-5',
+                                            TRUE~'default'))
+
+# Df_v1 = Df %>% pivot_longer(-Carnames) %>% 
+#   set_names(.,c("Carname","Parameters_Features","Values"))
+
+Df_v2 = Df%>% dplyr::select(.,Carnames,disp,hp,mpg,qsec,GearType)%>% pivot_longer(-c(Carnames,GearType))%>%
+  set_names(.,c("Carname","GearType","Parameters_Features","Values"))%>%
+  dplyr::mutate(.,Values=round(Values/10,2))
+
+# ============= Gradient =======
+
+Df_v2 %>%
+  ggplot(aes(x = Parameters_Features, y = Carname, label = Values, fill = Values)) +
+  geom_tile(color = "grey") +
+  scale_fill_gradient2(
+    low = "red",
+    mid = "orange",
+    high = "darkgreen",
+    midpoint = median(Df_v2$Values, na.rm = TRUE), # You need to specify a numeric value here
+    name = "Information",
+    limits = c(1, 70)) +
+  geom_text(color = "black") +
+  scale_y_discrete(limits = rev) +
+  scale_x_discrete(position = "top")
+
+
+
+# ============ Category based split 
+
+
+
+Df_v2 %>%
+  ggplot(aes(x = Parameters_Features, y = Carname, label = Values, fill = Values)) +
+  geom_tile(color = "grey") +
+  scale_fill_gradient2(
+    low = "red",
+    mid = "orange",
+    high = "darkgreen",
+    # midpoint = median(Df_v2$Values, na.rm = TRUE), # You need to specify a numeric value here
+    midpoint = 2.3,
+    name = "Information",
+    limits = c(1, 70)) +
+  geom_text(color = "white") +
+  scale_y_discrete(limits = rev) +
+  scale_x_discrete(position = "top")+
+  facet_wrap(~GearType)+
+  labs(title="Cars Gear Based Comparison ")+
+  theme_bw()+
+    theme(axis.test.x=element_blank(),
+          axis.test.y=element_blank(),
+          legend.title = element_markdown(size=5),
+          legend.title.align=0.5,
+          axis.line = element_blank(),
+          axis.ticks=element_blank())
+
+
+
+
+
