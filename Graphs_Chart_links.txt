@@ -1,51 +1,58 @@
-Link	Description				
-https://github.com/Fgazzelloni/TidyTuesday	Projects with lot 				
-https://www.tanyashapiro.com					
-https://github.com/tashapiro/30DayMapChallenge					
-https://github.com/tashapiro/TidyTuesday/blob/master/2023/W1/netflix.png					
-https://github.com/Fgazzelloni/TidyTuesday/blob/main/data/2022/w1_your_own_data/your_own_data.png					
-https://github.com/tashapiro?tab=overview&from=2025-07-01&to=2025-07-31					
-https://statisticsglobe.com/graphics-in-r					
-https://www.dartistics.com/adobeanalytics/int-heatmap.html	Heat Map				
-https://github.com/Fgazzelloni/TidyTuesday?tab=readme-ov-file					
-https://www.youtube.com/watch?v=qMWLfoqoico	Heat Map Correlation				
-https://www.youtube.com/watch?v=s0qBpD4A5l0	Bar and Circlar Charts	Advanced Bar Chart in R Tutorial: Grouped, Stacked, Circular (R Graph Gallery)			
-https://www.youtube.com/watch?v=RPwJ6ExwPbg	Bar and Circlar Charts				
-					
-https://mdneuzerling.com/post/using-r-to-send-an-outlook-email-with-an-inline-image/	Adding ggplot2 image as email body				
-https://docs.databricks.com/aws/en/notebooks/source/kb/notebooks/send-email-aws.html					
-					
-https://www.youtube.com/watch?v=SnCi0s0e4Io	gganimated graphs				
-					
-					
-https://www.youtube.com/watch?v=AgWgPSZ7Gp0	Map				
-https://www.youtube.com/watch?v=uZtto0cYjZM					
-https://www.youtube.com/watch?v=nlcZcWJiyX8					
-https://www.youtube.com/watch?v=efj6-aawubs&t=17s					
-https://www.youtube.com/watch?v=br-CBwFfxg0	India Map				
-https://www.youtube.com/watch?v=6LYxkGNi4R8					
-https://www.youtube.com/watch?v=6LYxkGNi4R8	Any country map file	https://diva-gis.org/data.html			
-					
-https://www.youtube.com/watch?v=YiZKc9jcRK8					
-					
-					
-https://ourworldindata.org/data	Data				
-https://www.youtube.com/watch?v=nDa6aHxiSYQ&list=PLBnFxG6owe1HRvUL6A5QNF_8ujP8NdLMc&index=7	Line chart				
-How to Create Parallel Plots in R with geom_line() and ggparcoord() - YouTube	Line chart and Parallel Line 				
-					
-					
-					
-					
-https://ggplot2-book.org/internals.html	book				
-https://ggplot2-book.org/annotations.html	Text Book more on ggplots2				
-https://www.youtube.com/watch?v=hPnMOn7EWH8&list=PLtL57Fdbwb_C6RS0JtBojTNOMVlgpeJkS&index=25	Basics of ggplot2				
-					
-					
-					
-					
-					
-					
-https://www.youtube.com/watch?v=N0l9ebyLV-k	Football team Chord diagram				
-https://www.youtube.com/watch?v=XSQsYkBeEbQ	Stack Bar Types 				
-https://www.youtube.com/watch?v=yYF7FWsxRkk&t=11s	Line path				
-https://www.youtube.com/watch?v=qMWLfoqoico					
+Link	Description	
+https://github.com/Fgazzelloni/TidyTuesday	Projects with lot 	
+https://www.tanyashapiro.com		
+https://github.com/tashapiro/30DayMapChallenge		
+https://github.com/tashapiro/TidyTuesday/blob/master/2023/W1/netflix.png		
+https://github.com/Fgazzelloni/TidyTuesday/blob/main/data/2022/w1_your_own_data/your_own_data.png		
+https://github.com/tashapiro?tab=overview&from=2025-07-01&to=2025-07-31		
+https://statisticsglobe.com/graphics-in-r		
+https://www.dartistics.com/adobeanalytics/int-heatmap.html	Heat Map	
+https://github.com/Fgazzelloni/TidyTuesday?tab=readme-ov-file		
+https://www.youtube.com/watch?v=qMWLfoqoico	Heat Map Correlation	
+https://www.youtube.com/watch?v=s0qBpD4A5l0	Bar and Circlar Charts	Advanced Bar Chart in R Tutorial: Grouped, Stacked, Circular (R Graph Gallery)
+https://www.youtube.com/watch?v=RPwJ6ExwPbg	Bar and Circlar Charts	
+		
+https://mdneuzerling.com/post/using-r-to-send-an-outlook-email-with-an-inline-image/	Adding ggplot2 image as email body	
+https://docs.databricks.com/aws/en/notebooks/source/kb/notebooks/send-email-aws.html		
+		
+https://www.youtube.com/watch?v=SnCi0s0e4Io	gganimated graphs	
+		
+		
+https://www.youtube.com/watch?v=AgWgPSZ7Gp0	Map	
+https://www.youtube.com/watch?v=uZtto0cYjZM		
+https://www.youtube.com/watch?v=nlcZcWJiyX8		
+https://www.youtube.com/watch?v=efj6-aawubs&t=17s		
+https://www.youtube.com/watch?v=br-CBwFfxg0	India Map	
+https://www.youtube.com/watch?v=6LYxkGNi4R8		
+https://www.youtube.com/watch?v=6LYxkGNi4R8	Any country map file	https://diva-gis.org/data.html
+		
+https://www.youtube.com/watch?v=YiZKc9jcRK8		
+		
+		
+https://ourworldindata.org/data	Data	
+https://www.youtube.com/watch?v=nDa6aHxiSYQ&list=PLBnFxG6owe1HRvUL6A5QNF_8ujP8NdLMc&index=7	Line chart	
+How to Create Parallel Plots in R with geom_line() and ggparcoord() - YouTube	Line chart and Parallel Line 	
+		
+		
+		
+		
+https://ggplot2-book.org/internals.html	book	
+https://ggplot2-book.org/annotations.html	Text Book more on ggplots2	
+https://www.youtube.com/watch?v=hPnMOn7EWH8&list=PLtL57Fdbwb_C6RS0JtBojTNOMVlgpeJkS&index=25	Basics of ggplot2	
+		
+		
+https://www.youtube.com/watch?v=HutLm_Yx4LE	Treemap	
+https://www.youtube.com/watch?v=k-IN6HBhgq4&list=PLkHcMTpvAaXV6Eg5ZHbcT2tA9-QnhJrIa&index=117	Sankey	
+		
+		
+https://www.youtube.com/watch?v=N0l9ebyLV-k	Football team Chord diagram	
+https://www.youtube.com/watch?v=XSQsYkBeEbQ	Stack Bar Types 	
+https://www.youtube.com/watch?v=yYF7FWsxRkk&t=11s	Line path	
+https://www.youtube.com/watch?v=qMWLfoqoico		
+		
+		
+		
+		
+		
+		
+https://www.youtube.com/watch?v=NlPZ35bbhOc	Power BI animation	
