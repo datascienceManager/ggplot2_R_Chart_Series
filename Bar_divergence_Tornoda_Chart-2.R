@@ -158,3 +158,44 @@ ggplot(df, aes(x = reorder(group, value), y = value)) +
   theme(axis.text.x = element_text(angle = 90,#---- x axis i.e. group value rotate to 90 degree
                                    hjust = 1,
                                    vjust = 0.5))
+
+
+
+
+# ============================  Color based on value is name of the bar or catagory name 
+# =============== adding title and sub titles 
+
+# install.packages("ggplot2")
+library(ggplot2)
+
+
+# Color based on value
+color <- ifelse(df$value < 0, "pink", "lightblue")
+
+
+ggplot(df, aes(x = reorder(group, value), y = value)) +
+  geom_bar(stat = "identity",fill= color,
+           show.legend = FALSE) +
+  geom_text(aes(label = group, # Text with groups
+                hjust = ifelse(value < 0, 1.5, -1),
+                vjust = 0.5), size = 2.5) +
+
+  xlab("Group") +
+  ylab("Value") +
+  scale_y_continuous(limits = c(min(df$value) - 0.2,
+                                max(df$value) + 0.2)) +
+  coord_flip()+
+  theme_bw()+
+  theme_classic()+
+  theme_alluvial()+
+  theme(axis.text.x = element_text(angle = 90,#---- x axis i.e. group value rotate to 90 degree
+                                   hjust = 1,
+                                   vjust = 0.5))+
+  labs(
+    title = "Bar or Tornoardo Chart",
+    subtitle = "(2020-23)",
+    caption = "datascientist_@outlook.com",
+    # tag = "Figure 1",
+    x = "Group",
+    y = "Value"
+  )
