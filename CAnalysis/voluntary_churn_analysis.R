@@ -1,7 +1,6 @@
 # =============================================================================
 # VOLUNTARY CHURN ANALYSIS - ggplot2 Visualizations
-# Tables: VoluntaryChurn + ViewershipInfo
-# Focus: Churn by Product/Offer, Payment Method + Viewership Behavior
+# Tables: Inactive + Behaviour
 # =============================================================================
 
 # --- 1. LIBRARIES -------------------------------------------------------------
@@ -17,14 +16,14 @@ library(ggtext)      # rich text in titles
 # Replace these paths with your actual data sources
 # e.g. read.csv(), dbGetQuery(), read_parquet(), etc.
 
-VoluntaryChurn <- read.csv("VoluntaryChurn.csv")   # <-- update path
-ViewershipInfo <- read.csv("ViewershipInfo.csv")   # <-- update path
+Inactivesubs <- read.csv("Inactivesubs.csv")   # <-- update path
+BehaviourView <- read.csv("BehaviourView.csv")   # <-- update path
 
-# --- 3. PREPARE: VoluntaryChurn -----------------------------------------------
+# --- 3. PREPARE: Inactivesubs -----------------------------------------------
 # Keep only voluntary churners (Subscription_churn_type == "voluntary churn")
 # and relevant active subscribers for churn rate denominators.
 
-churn_df <- VoluntaryChurn %>%
+churn_df <- Inactivesubs %>%
   mutate(
     # Parse dates (stored as integer days since 1970-01-01 in sample data)
     Subscription_start_date  = as.Date(Subscription_start_date, origin = "1970-01-01"),
@@ -39,11 +38,11 @@ churn_df <- VoluntaryChurn %>%
   )
 
 # --- 4. JOIN VIEWERSHIP -------------------------------------------------------
-# Assumes ViewershipInfo has: Customer_ID, total_watch_hours,
+# Assumes BehaviourView has: Customer_ID, total_watch_hours,
 # content_category (most watched), last_active_date
 # Adjust column names to match your actual schema.
 
-viewership_df <- ViewershipInfo %>%
+viewership_df <- BehaviourView %>%
   mutate(
     last_active_date = as.Date(last_active_date, origin = "1970-01-01"),
     # Days since last active (recency) — relative to today or a snapshot date
@@ -116,7 +115,7 @@ p1 <- ggplot(churn_by_product,
     subtitle = "% of subscribers per product who voluntarily churned",
     x        = NULL,
     y        = "Voluntary Churn Rate (%)",
-    caption  = "Source: VoluntaryChurn table"
+    caption  = "Source: Inactivesubs table"
   )
 
 # =============================================================================
@@ -149,7 +148,7 @@ p2 <- ggplot(churn_by_payment,
     subtitle = "Higher churn in certain payment channels may indicate friction or preference",
     x        = NULL,
     y        = "Voluntary Churn Rate (%)",
-    caption  = "Source: VoluntaryChurn table"
+    caption  = "Source: Inactivesubs table"
   )
 
 # =============================================================================
@@ -178,7 +177,7 @@ p3 <- ggplot(churn_heatmap,
     subtitle = "Darker red = higher churn risk combinations",
     x        = "Payment Method",
     y        = "Product",
-    caption  = "Source: VoluntaryChurn table"
+    caption  = "Source: Inactivesubs table"
   ) +
   theme(axis.text.x = element_text(angle = 30, hjust = 1),
         legend.key.width = unit(1.5, "cm"))
@@ -204,7 +203,7 @@ p4 <- ggplot(combined_df %>% filter(!is.na(total_watch_hours)),
     subtitle = "Lower engagement hours may be an early churn signal",
     x        = NULL,
     y        = "Total Watch Hours",
-    caption  = "Source: VoluntaryChurn + ViewershipInfo tables"
+    caption  = "Source: Inactivesubs + BehaviourView tables"
   )
 
 # =============================================================================
@@ -232,7 +231,7 @@ p5 <- ggplot(category_df,
     subtitle = "Identifies content types more/less associated with churn",
     x        = NULL,
     y        = "Share of Subscribers (%)",
-    caption  = "Source: ViewershipInfo table"
+    caption  = "Source: BehaviourView table"
   )
 
 # =============================================================================
@@ -252,7 +251,7 @@ p6 <- ggplot(combined_df %>% filter(!is.na(recency_days)),
     subtitle = "Churned subscribers tend to have higher recency (inactive longer before leaving)",
     x        = "Days Since Last Active",
     y        = "Number of Subscribers",
-    caption  = "Source: ViewershipInfo table"
+    caption  = "Source: BehaviourView table"
   ) +
   theme(legend.position = "none")
 
@@ -282,7 +281,7 @@ p7 <- ggplot(churn_offer_period,
     subtitle = "Shorter commitment periods may correlate with higher voluntary churn",
     x        = "Offer Period",
     y        = "Voluntary Churn Rate (%)",
-    caption  = "Source: VoluntaryChurn table"
+    caption  = "Source: Inactivesubs table"
   )
 
 # =============================================================================
@@ -312,7 +311,7 @@ p8 <- ggplot(product_summary,
     subtitle = "Low engagement + high churn products are the most at-risk",
     x        = "Average Watch Hours per Subscriber",
     y        = "Voluntary Churn Rate (%)",
-    caption  = "Source: VoluntaryChurn + ViewershipInfo tables"
+    caption  = "Source: Inactivesubs + BehaviourView tables"
   )
 
 # =============================================================================
