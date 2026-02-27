@@ -131,6 +131,36 @@ ggplot(df, aes(x = year, y = products_sold, color = store)) +
   theme_classic()
 
 
+
+# =====================================================================
+# ---- Adding value inside point 
+# ===== Nice one 
+# =====================================================================
+
+ggplot(df, aes(x = year, y = products_sold, color = store)) +
+  
+  geom_bump(size = 2) +
+  geom_point(size = 7) +
+  
+  geom_text(
+    aes(label = products_sold),
+    color = "white",
+    size = 3.5,
+    fontface = "bold",
+    vjust = 0.5
+  ) +
+  
+  theme_minimal() +
+  scale_color_brewer(palette = "Paired")+
+  labs(
+    title = "Products sold per store",
+    x = "Year",
+    y = "Products sold"
+  )+
+  theme_classic()
+
+
+
 # ======= Example : 3
 
 library(dplyr)
