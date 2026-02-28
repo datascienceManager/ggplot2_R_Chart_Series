@@ -1,7 +1,8 @@
 # A ggplot2 Tutorial for Beautiful Plotting in R
 
 > **Author:** Cédric Scherer ([@CedScherer](https://twitter.com/CedScherer))  
-> **Source:** [cedricscherer.com](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)  
+> **Source:** [cedricscherer.com](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)
+> **Source:** (https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)
 > **Last Updated:** 2020-12-02
 
 ---
