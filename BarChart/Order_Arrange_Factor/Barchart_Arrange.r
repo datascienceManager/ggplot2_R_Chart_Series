@@ -152,8 +152,8 @@ data_mtcars_long %>%
          model= reorder_within(x=model,by=Values, within=Category_var))%>%
   
   ggplot(.,aes(model,Values,fill = Category_var))+
-  geom_col(show.legend = FALSE)+
-  geom_label(aes(model,Values,label = Values),hjust = 2)+
+  geom_col(show.legend = FALSE,alpha=0.5)+
+  geom_label(aes(model,Values,label = Values),hjust=1.25,alpha=0.5)+
   facet_wrap(~Category_var,scales="free")+
   coord_flip()+
   
