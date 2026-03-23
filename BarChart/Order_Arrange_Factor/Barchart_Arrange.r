@@ -105,6 +105,35 @@ data_mtcars_long %>%
   labs(y = NULL,x = NULL , title = " TOP 10 Model Based on Features ", subtitle = "CarDataset")
 
 
+#============ Reorder Within Function =======
+
+
+
+library(tidytext)
+
+data_mtcars_long %>% 
+  filter(.,Category_var %in% c("mpg","wt","hp","disp"))%>%
+  group_by(.,Category_var)%>%
+  dplyr::top_n(10)%>%
+  ungroup()%>%
+  
+#------ This helps in arraning the factor variable
+  
+  mutate(.,Category_var = as.factor(Category_var),
+         model= reorder_within(x=model,by=Values, within=Category_var))%>%
+  
+  ggplot(.,aes(model,Values,fill = Category_var))+
+  geom_col(show.legend = FALSE)+
+  facet_wrap(~Category_var,scales="free")+
+  coord_flip()+
+  
+#------ this removes the unwanted names in Model in X axis
+  scale_x_reordered()+
+  theme_classic()+
+  scale_y_continuous(expand = c(0,0))+
+  labs(y = NULL,x = NULL , title = " TOP 10 Model Based on Features using 'reorder_within' ", subtitle = "CarDataset")
+
+
 
 
 
