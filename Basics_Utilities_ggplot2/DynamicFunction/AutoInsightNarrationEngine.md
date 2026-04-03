@@ -1,4 +1,4 @@
-Excellent—this is the step that turns your analysis into **decision-ready storytelling**. Let’s build an **Auto Insight Narration Engine** that converts data into a **full executive summary paragraph** (like what consultants or BI tools produce), using **ggplot2** outputs + smart logic.
+turning analysis into **decision-ready storytelling**. Let’s build an **Auto Insight Narration Engine** that converts data into a **full executive summary paragraph** (like what consultants or BI tools produce), using **ggplot2** outputs + smart logic.
 
 ---
 
